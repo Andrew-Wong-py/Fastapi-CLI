@@ -1,0 +1,14 @@
+开发规范：
+Router不允许做逻辑相关的操作，
+逻辑操作应放在services中
+sql只进行数据库相关操作，逻辑通用函数应在services里面获取
+api要注意response_models和return的对齐
+
+
+
+仅在api层做try，后端人员自行定位问题压力不大。向代码简洁性让路
+
+try-except在每一层都需要去做：提供更清晰更明确的错误上下文
+Repo层：捕获数据库连接错误或查询错误
+Service层：捕获业务规则相关的错误
+API层：捕获HTTP请求&响应的错误
