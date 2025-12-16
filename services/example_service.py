@@ -1,6 +1,7 @@
 class ExampleService:
     @classmethod
     def example_method(cls) -> str:
+        
         return "example_method"
 
 if __name__=='__main__':

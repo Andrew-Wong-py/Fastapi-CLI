@@ -7,6 +7,11 @@ class Settings(BaseSettings):
     应用配置类
     - 默认值为开发环境配置
     - 生产环境通过 CI/CD 注入环境变量覆盖
+
+    优先级顺序:
+    1. 环境变量（系统级）
+    2. .env 文件（项目级）
+    3. 类中的默认值（代码级）
     """
 
     # 环境标识
@@ -21,8 +26,13 @@ class Settings(BaseSettings):
 
     # 数据库配置
     DATABASE_URL: str = (
-        "postgresql+asyncpg://postgres:SZtu@143237@localhost:5432/earth_diary"
+        "postgresql+asyncpg://postgres:password@localhost:5432/your_database_name"
     )
+
+    # 日志配置
+    LOG_PATH: str = "logs/your_app_name.log"
+    ROTATION: str = "1 day"
+    RETENTION: str = "10 days"
 
     # CORS 配置
     ORIGINS: List[str] = ["*"]
